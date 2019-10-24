@@ -1,0 +1,68 @@
+{
+  "students": [
+  
+    {
+      "id": 2,
+      "surname": "Михайлов",
+      "name": "Рубен",
+      "patronymic": "Лукьянович",
+      "id_group": 1
+    },
+    {
+      "id": 3,
+      "surname": "Игнатова",
+      "name": "Аделина",
+      "patronymic": "Павловна",
+      "id_group": 1
+    },
+    {
+      "id": 4,
+      "surname": "Елисеев",
+      "name": "Аркадий",
+      "patronymic": "Владимирович",
+      "id_group": 2
+    },
+    {
+      "id": 5,
+      "surname": "Гаврилова",
+      "name": "Джема",
+      "patronymic": "Тарасовна",
+      "id_group": 2
+    },
+    {
+      "id": 6,
+      "surname": "Соловьёв",
+      "name": "Людвиг",
+      "patronymic": "Русланович",
+      "id_group": 2
+    },
+    {
+      "id": 7,
+      "surname": "Блохина",
+      "name": "Наталия",
+      "patronymic": "Германновна",
+      "id_group": 2
+    },
+    {
+      "id": 8,
+      "surname": "Ефремов",
+      "name": "Филипп",
+      "patronymic": "Витальевич",
+      "id_group": 3
+    },
+    {
+      "id": 9,
+      "surname": "Макаров",
+      "name": "Эльдар",
+      "patronymic": "Ярославович",
+      "id_group": 3
+    },
+    {
+      "id": 10,
+      "surname": "Копылов",
+      "name": "Лазарь",
+      "patronymic": "Викторович",
+      "id_group": 3
+    }
+  ]
+}
