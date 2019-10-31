@@ -101,5 +101,10 @@ namespace Curs
                 }
             }
         }
+
+        private void GroupGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            NoSave = true;
+        }
     }
 }

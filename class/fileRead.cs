@@ -19,6 +19,11 @@ namespace Curs
         {         
             File.WriteAllText(FileName, StringCipher.Encrypt(JSONString, "SuperStudent"), Encoding.GetEncoding("Windows-1251"));
         }
+        public void EncriptFile(string FileName)
+        {
+            string FileText = File.ReadAllText(FileName, Encoding.GetEncoding("Windows-1251"));
+            File.WriteAllText(FileName, StringCipher.Encrypt(FileText, "SuperStudent"), Encoding.GetEncoding("Windows-1251"));
+        }
 
     }
 }

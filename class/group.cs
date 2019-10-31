@@ -8,76 +8,20 @@ namespace Curs
 {
     class GroupCollection
     {
-        private List<Group> groups;
-        public List<Group> Groups
-        {
-            get
-            {
-                return groups;
-            }
-            set
-            {
-                groups = value;
-            }
-        }
+        public List<Group> Groups { get; set; }
     }
 
     class Group
     {
-        private int id;
-        private string number;
-        private string curator;
+        public int Id { get; set; }
 
-        public int Id
-        {
-            get
-            {
-                return id;
-            }
-            set
-            {
-                id = value;
-            }       
-        }
-
-        public string Number
-        {
-            get
-            {
-                return number;
-            }
-            set
-            {
-                number = value;
-            }
-        }
-        public string Curator
-        {
-            get
-            {
-                return curator;
-            }
-            set
-            {
-                curator = value;
-            }
-        }
+        public string Number { get; set; }
+        public string Curator { get; set; }
 
     }
     static class Groups
     {
-        static private List<Group> items;
-        static public List<Group> Items
-        {
-            get
-            {
-                return items;
-            }
-            set
-            {
-                items = value;
-            }
-        }
+        static public List<Group> Items { get; set; }
 
         static public void Load()
         {

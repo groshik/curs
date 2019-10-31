@@ -93,6 +93,7 @@
             this.subjectsButton.TabIndex = 2;
             this.subjectsButton.Text = "Предметы";
             this.subjectsButton.UseVisualStyleBackColor = false;
+            this.subjectsButton.Click += new System.EventHandler(this.SubjectsButton_Click);
             // 
             // groupButton
             // 

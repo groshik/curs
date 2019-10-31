@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace Curs
 {
@@ -19,8 +20,7 @@ namespace Curs
 
             Students.Load();
             Groups.Load();
-            Students.Save();
-            Groups.Save();
+            Subjects.Load();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

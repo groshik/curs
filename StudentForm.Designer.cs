@@ -139,6 +139,7 @@
             this.studentGridView.Name = "studentGridView";
             this.studentGridView.Size = new System.Drawing.Size(596, 201);
             this.studentGridView.TabIndex = 0;
+            this.studentGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentGridView_CellValueChanged);
             // 
             // panel1
             // 

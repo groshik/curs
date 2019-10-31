@@ -46,5 +46,13 @@ namespace Curs
             new GroupForm(this).Show();
 #pragma warning restore IDE0067
         }
+
+        private void SubjectsButton_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+#pragma warning disable IDE0067
+            new SubjectForm(this).Show();
+#pragma warning restore IDE0067
+        }
     }
 }

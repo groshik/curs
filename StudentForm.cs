@@ -117,5 +117,10 @@ namespace Curs
             NoSave = false;
             studentGridView.DataSource = Students.Items.Where(student => student.Id_Group == selectGroup.Id).ToList();
         }
+
+        private void StudentGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            NoSave = true;
+        }
     }
 }
