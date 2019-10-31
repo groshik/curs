@@ -108,6 +108,7 @@
             this.groupButton.TabIndex = 1;
             this.groupButton.Text = "Группы";
             this.groupButton.UseVisualStyleBackColor = false;
+            this.groupButton.Click += new System.EventHandler(this.GroupButton_Click);
             // 
             // studentsButton
             // 
@@ -205,7 +206,7 @@
         private System.Windows.Forms.Button studentsButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox groupComboBox1;
+        public System.Windows.Forms.ComboBox groupComboBox1;
         private System.Windows.Forms.BindingSource groupCollectionBindingSource;
         private System.Windows.Forms.BindingSource groupsBindingSource;
         private System.Windows.Forms.BindingSource groupBindingSource;

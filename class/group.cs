@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -82,7 +83,7 @@ namespace Curs
         {
             string JSONString;
             FileRead JSONRead = new FileRead();
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\groups.json");
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\groups.hav");
             JSONString = JSONRead.GetJSONString(path);
             GroupCollection groupCollection = JsonConvert.DeserializeObject<GroupCollection>(JSONString);
             Items = groupCollection.Groups;
@@ -95,7 +96,7 @@ namespace Curs
             };
             string JSONString = JsonConvert.SerializeObject(groupCollection);
             FileRead JSONRead = new FileRead();
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\groups.json");
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\groups.hav");
             JSONRead.SaveJSONString(path, JSONString);
         }
         static public Group GetGroupByID(int id)
@@ -119,7 +120,23 @@ namespace Curs
                 }
             }
             return false;
-            // test commit
+        }
+        static public void AddGroup()
+        {
+            Group group = new Group
+            {
+                Id = Students.GetNextId()
+            };
+            Items.Add(group);
+        }
+
+        static public void DeleteStudent(Group group)
+        {
+            Items.Remove(group);
+        }
+        static public int GetNextId()
+        {
+            return ++Items.Last().Id;
         }
     }
 }

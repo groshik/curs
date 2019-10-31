@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -30,7 +28,7 @@ namespace Curs
         static public void Load() {
             string JSONString;
             FileRead JSONRead = new FileRead();
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\students.json");
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\students.hav");
             JSONString = JSONRead.GetJSONString(path);
             StudentCollection studentCollection = JsonConvert.DeserializeObject<StudentCollection>(JSONString);
             Items = studentCollection.Students;
@@ -43,10 +41,10 @@ namespace Curs
             };  
             string JSONString = JsonConvert.SerializeObject(studentCollection);
             FileRead JSONRead = new FileRead();
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\students.json");
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\students.hav");
             JSONRead.SaveJSONString(path, JSONString);
         }
-        static public Student GetItemByID(int id)
+        static public Student GetStudentByID(int id)
         {
             foreach (Student student in Items)
             {

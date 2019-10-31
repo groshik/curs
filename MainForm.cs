@@ -38,5 +38,13 @@ namespace Curs
             new StudentForm(this).Show();
 #pragma warning restore IDE0067
         }
+
+        private void GroupButton_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+#pragma warning disable IDE0067
+            new GroupForm(this).Show();
+#pragma warning restore IDE0067
+        }
     }
 }
