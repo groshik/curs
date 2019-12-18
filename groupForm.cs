@@ -45,6 +45,7 @@ namespace Curs
             columns[0].Visible = false;
             columns[1].HeaderText = "Группа";
             columns[2].HeaderText = "Куратор";
+            NoSave = false;
         }
 
         private void AddGroupButton_Click(object sender, EventArgs e)
@@ -79,7 +80,6 @@ namespace Curs
         private void GroupForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             mainForm.Enabled = true;
-            mainForm.groupComboBox1.DataSource = Groups.Items.ToList();
         }
 
         private void GroupForm_FormClosing(object sender, FormClosingEventArgs e)

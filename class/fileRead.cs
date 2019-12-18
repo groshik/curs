@@ -24,6 +24,11 @@ namespace Curs
             string FileText = File.ReadAllText(FileName, Encoding.GetEncoding("Windows-1251"));
             File.WriteAllText(FileName, StringCipher.Encrypt(FileText, "SuperStudent"), Encoding.GetEncoding("Windows-1251"));
         }
+        public void DecryptFile(string FileName)
+        {
+            string FileText = File.ReadAllText(FileName, Encoding.GetEncoding("Windows-1251"));
+            File.WriteAllText(FileName, StringCipher.Decrypt(FileText, "SuperStudent"), Encoding.GetEncoding("Windows-1251"));
+        }
 
     }
 }

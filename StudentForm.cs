@@ -41,10 +41,11 @@ namespace Curs
         {
             mainForm = form;        
             InitializeComponent();
-            NoSave = false;
+            
             groupComboBox1.DataSource = Groups.Items;
             groupComboBox1.DisplayMember = "Number";
             groupComboBox1.ValueMember = "Id";
+            NoSave = false;
         }
 
         private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -63,6 +64,8 @@ namespace Curs
             columns[2].HeaderText = "Имя";
             columns[3].HeaderText = "Отчество";
             columns[4].Visible = false;
+            columns[5].HeaderText = "Платная форма обучения";
+            columns[6].HeaderText = "Активное участие в общественной деятельности";
         }
 
         private void AddStudentButton_Click(object sender, EventArgs e)

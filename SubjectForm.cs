@@ -44,6 +44,7 @@ namespace Curs
             DataGridViewColumnCollection columns = subjectGridView.Columns;
             columns[0].Visible = false;
             columns[1].HeaderText = "Предмет";
+            NoSave = false;
         }
 
         private void AddSubjectButton_Click(object sender, EventArgs e)
@@ -78,7 +79,6 @@ namespace Curs
         private void SubjectForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             mainForm.Enabled = true;
-            mainForm.groupComboBox1.DataSource = Subjects.Items.ToList();
         }
 
         private void SubjectForm_FormClosing(object sender, FormClosingEventArgs e)

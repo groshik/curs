@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="class\assessments.cs" />
     <Compile Include="class\fileRead.cs" />
     <Compile Include="class\group.cs" />
     <Compile Include="class\stringCipher.cs" />

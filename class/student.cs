@@ -17,6 +17,8 @@ namespace Curs
         public string Name { get; set; }
         public string Patronymic { get; set; }
         public int Id_Group { get; set; }
+        public bool Paid_Form_Of_Study { get; set; }
+        public bool Active_Participation { get; set; }
 
     }
 

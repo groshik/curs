@@ -21,6 +21,8 @@ namespace Curs
             Students.Load();
             Groups.Load();
             Subjects.Load();
+            //JSONRead.EncriptFile(Path.Combine(Directory.GetCurrentDirectory(), "data\\grades.hav"));
+            //JSONRead.DecryptFile(Path.Combine(Directory.GetCurrentDirectory(), "data\\grades.hav"));
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

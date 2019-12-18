@@ -19,9 +19,12 @@ namespace Curs
         {
            
             InitializeComponent();
-            groupComboBox1.DataSource = Groups.Items;
-            groupComboBox1.DisplayMember = "Number";
-            groupComboBox1.ValueMember = "Id";
+            Assessments ass = new Assessments(AssessmentGrid);
+            ass.AddSubject(1);
+            ass.AddSubject(2);
+            ass.AddStudent(1);
+            ass.AddStudent(2);
+            ass.UpdateTable();
         }
 
 
