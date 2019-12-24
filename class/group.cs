@@ -45,6 +45,7 @@ namespace Curs
         }
         static public Group GetGroupByID(int id)
         {
+            if (Items != null)
             foreach (Group group in Items)
             {
                 if (group.Id == id)

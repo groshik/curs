@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.IO;
 using Newtonsoft.Json;
@@ -19,7 +20,22 @@ namespace Curs
         public int Id_Group { get; set; }
         public bool Paid_Form_Of_Study { get; set; }
         public bool Active_Participation { get; set; }
-
+        public string FullName
+        {
+            get
+            {
+                string fullName = Surname;
+                if (Name != null && Patronymic != null) fullName += " " + Name[0] + "." + Patronymic[0] + ".";
+                return fullName;
+            }
+        }
+        public string FullFullName
+        {
+            get
+            {
+                return Surname + " " + Name + " " + Patronymic;
+            }
+        }
     }
 
     static class Students
@@ -73,7 +89,7 @@ namespace Curs
             Student student = new Student
             {
                 Id_Group = group.Id,
-                Id = Students.GetNextId()
+                Id = GetNextId()
             };
             Items.Add(student);
         }
@@ -85,7 +101,7 @@ namespace Curs
 
         static public int GetNextId()
         {
-            return ++Items.Last().Id;
+            return Items.Last().Id + 1;
         }
     }
 }

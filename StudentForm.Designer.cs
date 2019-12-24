@@ -39,13 +39,13 @@
             this.studentGridView = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupComboBox1 = new System.Windows.Forms.ComboBox();
-            this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentGridView)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -140,6 +140,8 @@
             this.studentGridView.Size = new System.Drawing.Size(596, 201);
             this.studentGridView.TabIndex = 0;
             this.studentGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentGridView_CellValueChanged);
+            this.studentGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StudentGridView_ColumnHeaderMouseClick);
+            this.studentGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.StudentGridView_DataError);
             // 
             // panel1
             // 
@@ -152,7 +154,6 @@
             // 
             // groupComboBox1
             // 
-            this.groupComboBox1.DataSource = this.groupBindingSource;
             this.groupComboBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupComboBox1.FormattingEnabled = true;
             this.groupComboBox1.Location = new System.Drawing.Point(451, 0);
@@ -161,9 +162,9 @@
             this.groupComboBox1.TabIndex = 0;
             this.groupComboBox1.SelectedIndexChanged += new System.EventHandler(this.GroupComboBox1_SelectedIndexChanged);
             // 
-            // groupBindingSource
+            // studentBindingSource
             // 
-            this.groupBindingSource.DataSource = typeof(Curs.Group);
+            this.studentBindingSource.DataSource = typeof(Curs.Student);
             // 
             // StudentForm
             // 
@@ -181,7 +182,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.studentGridView)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,8 +197,9 @@
         private System.Windows.Forms.ComboBox groupComboBox1;
         private System.Windows.Forms.Button deleteStudentButton;
         private System.Windows.Forms.Button addStudentButton;
-        private System.Windows.Forms.BindingSource groupBindingSource;
         private System.Windows.Forms.Button saveStudentsButton;
         private System.Windows.Forms.Button censelStudentsButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource studentBindingSource;
     }
 }

@@ -58,6 +58,24 @@
     <Compile Include="class\stringCipher.cs" />
     <Compile Include="class\student.cs" />
     <Compile Include="class\subject.cs" />
+    <Compile Include="DialogAddGroupStudents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogAddGroupStudents.Designer.cs">
+      <DependentUpon>DialogAddGroupStudents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogAddStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogAddStudent.Designer.cs">
+      <DependentUpon>DialogAddStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogAddSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogAddSubject.Designer.cs">
+      <DependentUpon>DialogAddSubject.cs</DependentUpon>
+    </Compile>
     <Compile Include="GroupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +102,15 @@
     <Compile Include="SubjectForm.Designer.cs">
       <DependentUpon>SubjectForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DialogAddGroupStudents.resx">
+      <DependentUpon>DialogAddGroupStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogAddStudent.resx">
+      <DependentUpon>DialogAddStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogAddSubject.resx">
+      <DependentUpon>DialogAddSubject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="groupForm.resx">
       <DependentUpon>GroupForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +130,9 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Group.datasource" />
+    <None Include="Properties\DataSources\Student.datasource" />
+    <None Include="Properties\DataSources\Students.datasource" />
+    <None Include="Properties\DataSources\Subject.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
