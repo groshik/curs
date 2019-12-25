@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Curs
@@ -44,7 +43,7 @@ namespace Curs
         }
         private void SerchBox_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(SerchBox.Text))
+            if (SerchBox.Text != "")
             {
                 SerchBox.Text = "Поиск...";
                 SerchBox.ForeColor = SystemColors.WindowFrame;

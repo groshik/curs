@@ -133,15 +133,15 @@
             // studentGridView
             // 
             this.studentGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.studentGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.studentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.studentGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.studentGridView.Location = new System.Drawing.Point(0, 0);
             this.studentGridView.Name = "studentGridView";
             this.studentGridView.Size = new System.Drawing.Size(596, 201);
             this.studentGridView.TabIndex = 0;
-            this.studentGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentGridView_CellValueChanged);
+            this.studentGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.studentGridView_CellContentClick);
             this.studentGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StudentGridView_ColumnHeaderMouseClick);
-            this.studentGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.StudentGridView_DataError);
             // 
             // panel1
             // 
