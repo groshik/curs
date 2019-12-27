@@ -12,6 +12,7 @@ namespace Curs
     public partial class SubjectForm : Form
     {
         private bool nosave;
+        private int SortColumn = -1;
         private bool NoSave
         {
             get
@@ -102,6 +103,46 @@ namespace Curs
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void subjectGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            List<Subject> subjectList = Subjects.Items.ToList();
+            int AscDesc = 1;
+            if (SortColumn == e.ColumnIndex)
+            {
+                AscDesc = -1;
+                SortColumn = -1;
+            }
+            else
+            {
+                SortColumn = e.ColumnIndex;
+            }
+            subjectList.Sort((x, y) => {
+                var Property_1 = x.GetType().GetProperty(subjectGridView.Columns[e.ColumnIndex].DataPropertyName).GetValue(x, null);
+                var Property_2 = y.GetType().GetProperty(subjectGridView.Columns[e.ColumnIndex].DataPropertyName).GetValue(y, null);
+                string Prop_1 = Property_1 != null ? Property_1.ToString() : "";
+                string Prop_2 = Property_2 != null ? Property_2.ToString() : "";
+                double Prop_1_double;
+                double Prop_2_double;
+                if (Double.TryParse(Prop_1, out Prop_1_double) && Double.TryParse(Prop_2, out Prop_2_double))
+                {
+                    if (Prop_1_double > Prop_2_double)
+                        return 1 * AscDesc;
+                    else if (Prop_1_double < Prop_2_double)
+                        return -1 * AscDesc;
+                    else
+                        return 0;
+                }
+                else
+                {
+                    if (AscDesc == 1)
+                        return Program.CheckString(Prop_1, Prop_2);
+                    else
+                        return Program.CheckString(Prop_2, Prop_1);
+                }
+            });
+            subjectGridView.DataSource = subjectList.ToList();
         }
     }
 }

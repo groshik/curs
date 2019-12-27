@@ -12,6 +12,7 @@ namespace Curs
     public partial class StudentForm : Form
     {
         private bool nosave;
+        private int SortColumn = -1;
         private bool NoSave
         {
             get
@@ -159,7 +160,17 @@ namespace Curs
         {
             Group selectGroup = (Group)groupComboBox1.SelectedItem;
             List<Student> studentList = Students.Items.ToList();
-            studentList.Sort((x, y) => {
+            int AscDesc = 1;
+            if (SortColumn == e.ColumnIndex)
+            {
+                AscDesc = -1;
+                SortColumn = -1;
+            }
+            else
+            {
+                SortColumn = e.ColumnIndex;
+            }
+            studentList.Sort((x, y) => {               
                 var Property_1 = x.GetType().GetProperty(studentGridView.Columns[e.ColumnIndex].DataPropertyName).GetValue(x, null);
                 var Property_2 = y.GetType().GetProperty(studentGridView.Columns[e.ColumnIndex].DataPropertyName).GetValue(y, null);
                 string Prop_1 = Property_1 != null ? Property_1.ToString() : "";
@@ -169,15 +180,18 @@ namespace Curs
                 if (Double.TryParse(Prop_1, out Prop_1_double) && Double.TryParse(Prop_2, out Prop_2_double))
                 {
                     if (Prop_1_double > Prop_2_double)
-                        return 1;
+                        return 1 * AscDesc;
                     else if (Prop_1_double < Prop_2_double)
-                        return -1;
+                        return -1 * AscDesc;
                     else
                         return 0;
                 }
                 else
                 {
-                return Program.CheckString(Prop_1, Prop_2);
+                    if (AscDesc == 1)
+                        return Program.CheckString(Prop_1, Prop_2);
+                    else
+                        return Program.CheckString(Prop_2, Prop_1);
                 }
              });
             if (selectGroup.Id != 0)

@@ -29,7 +29,7 @@ namespace Curs
             InitializeComponent();
             Students.ChangeDataInListEvent += () =>
             {
-                IndexReportCard.UpdateTable();
+                IndexReportCard?.UpdateTable();
             };
         }
         private void Form1_Load(object sender, EventArgs e)

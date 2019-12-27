@@ -81,7 +81,7 @@ namespace Curs
             ID_Students.ForEach(student => {
                 Student studentInfo = Students.GetStudentByID(student);
                 DataGridViewRow row = new DataGridViewRow();
-                string studentName = studentInfo.Surname + ' ' + studentInfo.Name[0] + '.' + studentInfo.Patronymic[0] + '.';
+                string studentName = studentInfo.FullName + " (" + Groups.GetGroupByID(studentInfo.Id_Group).Number + ")";
                 row.HeaderCell.Value = studentName;
                 Table.Rows.Add(row);
                 int RowHeaderWidth = 9 * studentName.Length;
