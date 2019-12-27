@@ -33,7 +33,6 @@ namespace Curs
                 }
             }
         }
-
         private readonly MainForm mainForm;
         public GroupForm(MainForm form)
         {
@@ -45,8 +44,12 @@ namespace Curs
             columns[1].HeaderText = "Группа";
             columns[2].HeaderText = "Куратор";
             NoSave = false;
+            Groups.ChangeDataInListEvent += UpdateStudentData;
         }
-
+        private void UpdateStudentData()
+        {
+            NoSave = true;
+        }
         private void AddGroupButton_Click(object sender, EventArgs e)
         {
             Groups.AddGroup();
@@ -54,33 +57,28 @@ namespace Curs
             groupGridView.CurrentCell = groupGridView[1, groupGridView.RowCount - 1];
             NoSave = true;
         }
-
         private void DeleteGroupButton_Click(object sender, EventArgs e)
         {
             Groups.DeleteStudent((Group)groupGridView.CurrentRow.DataBoundItem);
             groupGridView.DataSource = Groups.Items.ToList();
             NoSave = true;
         }
-
         private void SaveGroupsButton_Click(object sender, EventArgs e)
         {
             Groups.Save();
             NoSave = false;
             groupGridView.DataSource = Groups.Items.ToList();
         }
-
         private void CenselGroupsButton_Click(object sender, EventArgs e)
         {
             Groups.Load();
             NoSave = false;
             groupGridView.DataSource = Groups.Items.ToList();
         }
-
         private void GroupForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             mainForm.Enabled = true;
         }
-
         private void GroupForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (NoSave)
@@ -99,11 +97,6 @@ namespace Curs
                     e.Cancel = true;
                 }
             }
-        }
-
-        private void GroupGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            NoSave = true;
         }
     }
 }

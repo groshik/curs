@@ -109,7 +109,8 @@ namespace Curs
     {
 
         static public List<Student> Items { get; set; }
-
+        public delegate void ChangeDataInListHandelr();
+        public static event ChangeDataInListHandelr ChangeDataInListEvent;
         static public void Load() {
             string JSONString;
             FileRead JSONRead = new FileRead();
@@ -179,7 +180,6 @@ namespace Curs
         {
             return Items.Last().Id + 1;
         }
-        public delegate void ChangeDataInListHandelr();
-        public static event ChangeDataInListHandelr ChangeDataInListEvent;
+        
     }
 }

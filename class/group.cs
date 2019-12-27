@@ -13,16 +13,53 @@ namespace Curs
 
     class Group
     {
-        public int Id { get; set; }
-
-        public string Number { get; set; }
-        public string Curator { get; set; }
-
+        private int id;
+        private string number;
+        private string curator;
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+                ChangeDataEvent?.Invoke();
+            }
+        }
+        public string Number
+        {
+            get
+            {
+                return number;
+            }
+            set
+            {
+                number = value;
+                ChangeDataEvent?.Invoke();
+            }
+        }
+        public string Curator
+        {
+            get
+            {
+                return curator;
+            }
+            set
+            {
+                curator = value;
+                ChangeDataEvent?.Invoke();
+            }
+        }
+        public delegate void ChangeDataHandelr();
+        public event ChangeDataHandelr ChangeDataEvent;
     }
     static class Groups
     {
         static public List<Group> Items { get; set; }
-
+        public delegate void ChangeDataInListHandelr();
+        public static event ChangeDataInListHandelr ChangeDataInListEvent;
         static public void Load()
         {
             string JSONString;
@@ -31,6 +68,13 @@ namespace Curs
             JSONString = JSONRead.GetJSONString(path);
             GroupCollection groupCollection = JsonConvert.DeserializeObject<GroupCollection>(JSONString);
             Items = groupCollection.Groups;
+            Items.ForEach(group =>
+            {
+                group.ChangeDataEvent += () =>
+                {
+                    ChangeDataInListEvent?.Invoke();
+                };
+            });
         }
         static public void Save()
         {
@@ -71,6 +115,10 @@ namespace Curs
             Group group = new Group
             {
                 Id = Students.GetNextId()
+            };
+            group.ChangeDataEvent += () =>
+            {
+                ChangeDataInListEvent?.Invoke();
             };
             Items.Add(group);
         }

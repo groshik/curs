@@ -31,7 +31,7 @@
             this.SubjectListBox = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelDialogButton = new System.Windows.Forms.Button();
             this.OKButton = new System.Windows.Forms.Button();
             this.SerchBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
@@ -72,7 +72,7 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.CancelButton, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.CancelDialogButton, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.OKButton, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 268);
@@ -84,17 +84,17 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(239, 34);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // CancelButton
+            // CancelDialogButton
             // 
-            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CancelButton.Location = new System.Drawing.Point(119, 0);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(0);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(120, 34);
-            this.CancelButton.TabIndex = 1;
-            this.CancelButton.Text = "Отмена";
-            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelDialogButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelDialogButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CancelDialogButton.Location = new System.Drawing.Point(119, 0);
+            this.CancelDialogButton.Margin = new System.Windows.Forms.Padding(0);
+            this.CancelDialogButton.Name = "CancelDialogButton";
+            this.CancelDialogButton.Size = new System.Drawing.Size(120, 34);
+            this.CancelDialogButton.TabIndex = 1;
+            this.CancelDialogButton.Text = "Отмена";
+            this.CancelDialogButton.UseVisualStyleBackColor = true;
             // 
             // OKButton
             // 
@@ -145,7 +145,7 @@
         private System.Windows.Forms.ListBox SubjectListBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelDialogButton;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.TextBox SerchBox;
     }

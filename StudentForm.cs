@@ -81,7 +81,13 @@ namespace Curs
             columns[7].Visible = false;
             columns[8].Visible = false;
             DataGridViewComboBoxColumn comboCol = new DataGridViewComboBoxColumn();
-            comboCol.DataSource = Groups.Items;
+            List<Group> listGroup = new List<Group>();
+            Group noGroup = new Group();
+            noGroup.Id = 0;
+            noGroup.Number = "Нет группы";
+            listGroup.Add(noGroup);
+            listGroup.AddRange(Groups.Items);
+            comboCol.DataSource = listGroup;
             comboCol.DataPropertyName = "Id_Group";
             comboCol.Name = "Group";
             comboCol.DisplayMember = "Number";
@@ -154,8 +160,8 @@ namespace Curs
             Group selectGroup = (Group)groupComboBox1.SelectedItem;
             List<Student> studentList = Students.Items.ToList();
             studentList.Sort((x, y) => {
-                var Property_1 = x.GetType().GetProperty(studentGridView.Columns[e.ColumnIndex].DataPropertyName).GetValue(x, new Object[] { 0 });
-                var Property_2 = y.GetType().GetProperty(studentGridView.Columns[e.ColumnIndex].DataPropertyName).GetValue(y, new Object[] { 0 });
+                var Property_1 = x.GetType().GetProperty(studentGridView.Columns[e.ColumnIndex].DataPropertyName).GetValue(x, null);
+                var Property_2 = y.GetType().GetProperty(studentGridView.Columns[e.ColumnIndex].DataPropertyName).GetValue(y, null);
                 string Prop_1 = Property_1 != null ? Property_1.ToString() : "";
                 string Prop_2 = Property_2 != null ? Property_2.ToString() : "";
                 double Prop_1_double;

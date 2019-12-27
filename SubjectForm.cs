@@ -44,8 +44,12 @@ namespace Curs
             columns[0].Visible = false;
             columns[1].HeaderText = "Предмет";
             NoSave = false;
+            Subjects .ChangeDataInListEvent += UpdateStudentData;
         }
-
+        private void UpdateStudentData()
+        {
+            NoSave = true;
+        }
         private void AddSubjectButton_Click(object sender, EventArgs e)
         {
             Subjects.AddSubject();
@@ -98,11 +102,6 @@ namespace Curs
                     e.Cancel = true;
                 }
             }
-        }
-
-        private void SubjectGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            NoSave = true;
         }
     }
 }

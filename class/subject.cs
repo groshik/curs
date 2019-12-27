@@ -13,14 +13,39 @@ namespace Curs
 
     class Subject
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-
+        private int id;
+        private string title;
+        public int Id {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+                ChangeDataEvent?.Invoke();
+            }
+        }
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+            set
+            {
+                title = value;
+                ChangeDataEvent?.Invoke();
+            }
+        }
+        public delegate void ChangeDataHandelr();
+        public event ChangeDataHandelr ChangeDataEvent;
     }
     static class Subjects
     {
         static public List<Subject> Items { get; set; }
-
+        public delegate void ChangeDataInListHandelr();
+        public static event ChangeDataInListHandelr ChangeDataInListEvent;
         static public void Load()
         {
             string JSONString;
@@ -29,6 +54,13 @@ namespace Curs
             JSONString = JSONRead.GetJSONString(path);
             SubjectCollection subjectCollection = JsonConvert.DeserializeObject<SubjectCollection>(JSONString);
             Items = subjectCollection.Subjects;
+            Items.ForEach(subject =>
+            {
+                subject.ChangeDataEvent += () =>
+                {
+                    ChangeDataInListEvent?.Invoke();
+                };
+            });
         }
         static public void Save()
         {
@@ -68,6 +100,10 @@ namespace Curs
             Subject subject = new Subject
             {
                 Id = Students.GetNextId()
+            };
+            subject.ChangeDataEvent += () =>
+            {
+                ChangeDataInListEvent?.Invoke();
             };
             Items.Add(subject);
         }

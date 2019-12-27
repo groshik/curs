@@ -241,6 +241,7 @@
             this.StipendBox.Name = "StipendBox";
             this.StipendBox.Size = new System.Drawing.Size(100, 20);
             this.StipendBox.TabIndex = 6;
+            this.StipendBox.TextChanged += new System.EventHandler(this.StipendBox_TextChanged);
             this.StipendBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Scholarship_KeyDown);
             this.StipendBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Scholarship_KeyPress);
             // 

@@ -135,7 +135,6 @@
             this.subjectGridView.Name = "subjectGridView";
             this.subjectGridView.Size = new System.Drawing.Size(794, 410);
             this.subjectGridView.TabIndex = 0;
-            this.subjectGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.SubjectGridView_CellValueChanged);
             // 
             // groupBindingSource
             // 

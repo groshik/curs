@@ -27,6 +27,10 @@ namespace Curs
         public MainForm()
         {
             InitializeComponent();
+            Students.ChangeDataInListEvent += () =>
+            {
+                IndexReportCard.UpdateTable();
+            };
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -136,6 +140,11 @@ namespace Curs
         private void AssessmentGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void StipendBox_TextChanged(object sender, EventArgs e)
+        {
+            indexReportCard.UpdateTable();
         }
     }
 }
