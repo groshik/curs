@@ -97,9 +97,11 @@ namespace Curs
                     return group;
                 }
             }
-            Group noGroup = new Group();
-            noGroup.Id = 0;
-            noGroup.Number = "Нет группы";
+            Group noGroup = new Group
+            {
+                Id = 0,
+                Number = "Нет группы"
+            };
             return noGroup;
         }
         static public bool Extant(int id)

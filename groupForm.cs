@@ -100,7 +100,7 @@ namespace Curs
             }
         }
 
-        private void groupGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void GroupGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             List<Group> groupList = Groups.Items.ToList();
             int AscDesc = 1;
@@ -118,9 +118,7 @@ namespace Curs
                 var Property_2 = y.GetType().GetProperty(groupGridView.Columns[e.ColumnIndex].DataPropertyName).GetValue(y, null);
                 string Prop_1 = Property_1 != null ? Property_1.ToString() : "";
                 string Prop_2 = Property_2 != null ? Property_2.ToString() : "";
-                double Prop_1_double;
-                double Prop_2_double;
-                if (Double.TryParse(Prop_1, out Prop_1_double) && Double.TryParse(Prop_2, out Prop_2_double))
+                if (Double.TryParse(Prop_1, out double Prop_1_double) && Double.TryParse(Prop_2, out double Prop_2_double))
                 {
                     if (Prop_1_double > Prop_2_double)
                         return 1 * AscDesc;

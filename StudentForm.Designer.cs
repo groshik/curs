@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.saveStudentsButton = new System.Windows.Forms.Button();
@@ -39,13 +38,11 @@
             this.studentGridView = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupComboBox1 = new System.Windows.Forms.ComboBox();
-            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentGridView)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -140,7 +137,7 @@
             this.studentGridView.Name = "studentGridView";
             this.studentGridView.Size = new System.Drawing.Size(596, 201);
             this.studentGridView.TabIndex = 0;
-            this.studentGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.studentGridView_CellContentClick);
+            this.studentGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentGridView_CellContentClick);
             this.studentGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StudentGridView_ColumnHeaderMouseClick);
             // 
             // panel1
@@ -162,10 +159,6 @@
             this.groupComboBox1.TabIndex = 0;
             this.groupComboBox1.SelectedIndexChanged += new System.EventHandler(this.GroupComboBox1_SelectedIndexChanged);
             // 
-            // studentBindingSource
-            // 
-            this.studentBindingSource.DataSource = typeof(Curs.Student);
-            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,7 +175,6 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.studentGridView)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -198,8 +190,6 @@
         private System.Windows.Forms.Button deleteStudentButton;
         private System.Windows.Forms.Button addStudentButton;
         private System.Windows.Forms.Button saveStudentsButton;
-        private System.Windows.Forms.Button censelStudentsButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource studentBindingSource;
+        private System.Windows.Forms.Button censelStudentsButton; 
     }
 }

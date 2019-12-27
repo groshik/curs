@@ -39,12 +39,16 @@ namespace Curs
         {
             mainForm = form;        
             InitializeComponent();
-            
-            Group allGroup = new Group();
-            allGroup.Id = 0;
-            allGroup.Number = "Все Группы";
-            List<Group> gruops = new List<Group>();
-            gruops.Add(allGroup);
+
+            Group allGroup = new Group
+            {
+                Id = 0,
+                Number = "Все Группы"
+            };
+            List<Group> gruops = new List<Group>
+            {
+                allGroup
+            };
             gruops.AddRange(Groups.Items.ToList());
             
             groupComboBox1.DataSource = gruops;
@@ -83,9 +87,11 @@ namespace Curs
             columns[8].Visible = false;
             DataGridViewComboBoxColumn comboCol = new DataGridViewComboBoxColumn();
             List<Group> listGroup = new List<Group>();
-            Group noGroup = new Group();
-            noGroup.Id = 0;
-            noGroup.Number = "Нет группы";
+            Group noGroup = new Group
+            {
+                Id = 0,
+                Number = "Нет группы"
+            };
             listGroup.Add(noGroup);
             listGroup.AddRange(Groups.Items);
             comboCol.DataSource = listGroup;
@@ -175,9 +181,7 @@ namespace Curs
                 var Property_2 = y.GetType().GetProperty(studentGridView.Columns[e.ColumnIndex].DataPropertyName).GetValue(y, null);
                 string Prop_1 = Property_1 != null ? Property_1.ToString() : "";
                 string Prop_2 = Property_2 != null ? Property_2.ToString() : "";
-                double Prop_1_double;
-                double Prop_2_double;
-                if (Double.TryParse(Prop_1, out Prop_1_double) && Double.TryParse(Prop_2, out Prop_2_double))
+                if (Double.TryParse(Prop_1, out double Prop_1_double) && Double.TryParse(Prop_2, out double Prop_2_double))
                 {
                     if (Prop_1_double > Prop_2_double)
                         return 1 * AscDesc;
@@ -193,14 +197,14 @@ namespace Curs
                     else
                         return Program.CheckString(Prop_2, Prop_1);
                 }
-             });
+            });
             if (selectGroup.Id != 0)
                 studentGridView.DataSource = studentList.Where(student => student.Id_Group == selectGroup.Id).ToList();
             else
                 studentGridView.DataSource = studentList.ToList();
         }
 
-        private void studentGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void StudentGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             studentGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }

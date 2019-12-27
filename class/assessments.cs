@@ -1,33 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Linq;
-using System.Text;
 
 namespace Curs
 {
     class Assessments
     {
-        private DateTime Start_Period { get; set; }
-        private DateTime Finish_Period { get; set; }
+        public DateTime Start_Period { get; set; }
+        public DateTime Finish_Period { get; set; }
         private List<int> ID_Students { get; set; }
         private List<int> ID_Subjects { get; set; }
         private int[,] Assessments_List { get; set; }
         private DataGridView Table { get; set; }
-        private TextBox averageAssessmentBox { get; set; }
-        private void updateData(object sender, DataGridViewCellEventArgs e)
+        private TextBox StipendBox { get; set; }
+        private void UpdateData(object sender, DataGridViewCellEventArgs e)
         {
             UpdateData();
         }
 
-        public Assessments(DataGridView grid, TextBox text)
+        public Assessments(DataGridView grid, TextBox text, DateTimePicker start, DateTimePicker finish)
         {
             Table = grid;
-            averageAssessmentBox = text;
+            StipendBox = text;
             ID_Students = new List<int>();
             ID_Subjects = new List<int>();
             Assessments_List = new  int[0,0];
-            Table.CellValueChanged += updateData;
+            Table.CellValueChanged += UpdateData;
+            Start_Period = DateTime.Now;
+            Finish_Period = DateTime.Now;
+            start.DataBindings.Clear();
+            finish.DataBindings.Clear();
+            start.DataBindings.Add("Value", this, "Start_Period");
+            finish.DataBindings.Add("Value", this, "Finish_Period");
         }
 
         public void AddStudent(int student)
@@ -60,22 +64,29 @@ namespace Curs
         {
             Table.Rows.Clear();
             Table.Columns.Clear();
-            Table.CellValueChanged -= updateData;
+            Table.CellValueChanged -= UpdateData;
             ID_Subjects.ForEach(subject => {
                 Subject subjectInfo = Subjects.GetSubjectByID(subject);
                 Table.Columns.Add(subjectInfo.Id.ToString(), subjectInfo.Title);
             });
 
-            DataGridViewColumn averageAssessmentCol = new DataGridViewColumn();
-            averageAssessmentCol.ReadOnly = true;
-            averageAssessmentCol.HeaderText = "Средняя оценка";
-            averageAssessmentCol.CellTemplate = new DataGridViewTextBoxCell();
+            DataGridViewColumn averageAssessmentCol = new DataGridViewColumn
+            {
+                ReadOnly = true,
+                HeaderText = "Средняя оценка",
+                CellTemplate = new DataGridViewTextBoxCell(),
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    BackColor = System.Drawing.Color.FromArgb(200, 200, 200)
+                }
+            };        
             Table.Columns.Add(averageAssessmentCol);
-
-            DataGridViewColumn stipendCol = new DataGridViewColumn();
-            stipendCol.ReadOnly = true;
-            stipendCol.HeaderText = "Стипендия";
-            stipendCol.CellTemplate = new DataGridViewTextBoxCell();
+            DataGridViewColumn stipendCol = new DataGridViewColumn
+            {
+                ReadOnly = true,
+                HeaderText = "Стипендия",
+                CellTemplate = new DataGridViewTextBoxCell(),
+            };
             Table.Columns.Add(stipendCol);
 
             ID_Students.ForEach(student => {
@@ -99,22 +110,35 @@ namespace Curs
                     Table[assessments, student].Value = assessmentList[student, assessments];
                     averageAssessment += assessmentList[student, assessments];
                 }
-                averageAssessment = averageAssessment / ID_Subjects.Count;
+                averageAssessment /= ID_Subjects.Count;
                 Table[ID_Subjects.Count, student].Value = Math.Round(averageAssessment, 2);
+
                 Student stud = Students.GetStudentByID(ID_Students[student]);
                 double allowance = 0;
                 if (averageAssessment >= 9 && stud.Active_Participation)
+                {
                     allowance = 1.5;
+                    Table[ID_Subjects.Count + 1, student].Style.BackColor = System.Drawing.Color.FromArgb(28, 193, 243);
+                }
                 else if (averageAssessment >= 9)
+                {
                     allowance = 1.25;
+                    Table[ID_Subjects.Count + 1, student].Style.BackColor = System.Drawing.Color.FromArgb(80, 216, 103);
+                }
                 else if (averageAssessment > 5)
+                {
                     allowance = 1;
-                double stipend = 0;
-                Double.TryParse(averageAssessmentBox.Text, out stipend);
+
+                }
+                else
+                {
+                    Table[ID_Subjects.Count + 1, student].Style.BackColor = System.Drawing.Color.FromArgb(253, 81, 81);
+                }
+                Double.TryParse(StipendBox.Text, out double stipend);
                 stipend *= allowance;
                 Table[ID_Subjects.Count + 1, student].Value = Math.Round(stipend, 2);
             }
-            Table.CellValueChanged += updateData;
+            Table.CellValueChanged += UpdateData;
         }
         public void UpdateData()
         {
@@ -163,10 +187,10 @@ namespace Curs
             }
             Assessments_List = newAssessmentsList;
         }
-        public void Save(string fileName)
+        /*public void Save(string fileName)
         {
             
-        }
+        }*/
         
 
     }

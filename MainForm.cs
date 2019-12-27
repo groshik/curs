@@ -113,7 +113,7 @@ namespace Curs
         }
         private void CreateMenuItem_Click(object sender, EventArgs e)
         {
-            indexReportCard = new Assessments(AssessmentGrid, StipendBox);
+            indexReportCard = new Assessments(AssessmentGrid, StipendBox, DateStartPicker, DateFinishPicker);
             ReportCardPanel.Visible = true;
         }
         private void AddSubjectButton_Click(object sender, EventArgs e)
@@ -145,6 +145,11 @@ namespace Curs
         private void StipendBox_TextChanged(object sender, EventArgs e)
         {
             indexReportCard.UpdateTable();
+        }
+
+        private void DateStartPicker_ValueChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

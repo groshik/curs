@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ReportCardMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -208,6 +209,8 @@
             this.ReportCardPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
             this.ReportCardPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ReportCardPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.ReportCardPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.ReportCardPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ReportCardPanel.Size = new System.Drawing.Size(581, 321);
             this.ReportCardPanel.TabIndex = 1;
             this.ReportCardPanel.Visible = false;
@@ -270,6 +273,8 @@
             this.DateStartPicker.Name = "DateStartPicker";
             this.DateStartPicker.Size = new System.Drawing.Size(94, 20);
             this.DateStartPicker.TabIndex = 3;
+            this.DateStartPicker.Value = new System.DateTime(2018, 8, 1, 0, 0, 0, 0);
+            this.DateStartPicker.ValueChanged += new System.EventHandler(this.DateStartPicker_ValueChanged);
             // 
             // DateFinishPicker
             // 
@@ -287,6 +292,15 @@
             this.AssessmentGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AssessmentGrid.Location = new System.Drawing.Point(3, 57);
             this.AssessmentGrid.Name = "AssessmentGrid";
+            this.AssessmentGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AssessmentGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.AssessmentGrid.Size = new System.Drawing.Size(575, 227);
             this.AssessmentGrid.TabIndex = 1;
             this.AssessmentGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.AssessmentGrid_CellValueChanged);

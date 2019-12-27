@@ -135,7 +135,7 @@
             this.subjectGridView.Name = "subjectGridView";
             this.subjectGridView.Size = new System.Drawing.Size(794, 410);
             this.subjectGridView.TabIndex = 0;
-            this.subjectGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.subjectGridView_ColumnHeaderMouseClick);
+            this.subjectGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.SubjectGridView_ColumnHeaderMouseClick);
             // 
             // groupBindingSource
             // 
