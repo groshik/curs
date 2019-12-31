@@ -29,6 +29,46 @@ namespace Curs
             }
             return 0;
         }
+        public static List<int> StringInListInt(string str, char delimiter)
+        {
+            str = str.Trim(' ');
+            List<int> newList = new List<int>();
+            string value = "";
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] == delimiter)
+                {
+                    newList.Add(Int32.Parse(value));
+                    value = "";
+                }
+                else
+                {
+                    value += str[i];
+                }
+            }
+            newList.Add(Int32.Parse(value));
+            return newList;
+        }
+        public static List<string> StringInListString(string str, char delimiter)
+        {
+            str = str.Trim(' ');
+            List<string> newList = new List<string>();
+            string value = "";
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] == delimiter)
+                {
+                    newList.Add(value);
+                    value = "";
+                }
+                else
+                {
+                    value += str[i];
+                }
+            }
+            newList.Add(value);
+            return newList;
+        }
     }
 
 }

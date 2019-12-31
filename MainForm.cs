@@ -21,7 +21,21 @@ namespace Curs
             }
             set
             {
+                if (indexReportCard != null)
+                    indexReportCard.Dispose();
                 indexReportCard = value;
+                if (indexReportCard != null)
+                {
+                    SaveMenuItem.Enabled = true;
+                    SaveAsMenuItem.Enabled = true;
+                    ReportCardPanel.Visible = true;
+                }
+                else
+                {
+                    SaveMenuItem.Enabled = false;
+                    SaveAsMenuItem.Enabled = false;
+                    ReportCardPanel.Visible = false;
+                }
             }
         }
         public MainForm()
@@ -113,8 +127,7 @@ namespace Curs
         }
         private void CreateMenuItem_Click(object sender, EventArgs e)
         {
-            indexReportCard = new Assessments(AssessmentGrid, StipendBox, DateStartPicker, DateFinishPicker);
-            ReportCardPanel.Visible = true;
+            IndexReportCard = new Assessments(AssessmentGrid, StipendBox, DateStartPicker, DateFinishPicker);
         }
         private void AddSubjectButton_Click(object sender, EventArgs e)
         {
@@ -141,15 +154,55 @@ namespace Curs
         {
 
         }
-
         private void StipendBox_TextChanged(object sender, EventArgs e)
         {
-            indexReportCard.UpdateTable();
-        }
 
+        }
         private void DateStartPicker_ValueChanged(object sender, EventArgs e)
         {
             
+        }
+        private void SaveAsMenuItem_Click(object sender, EventArgs e)
+        {
+            if (IndexReportCard != null)
+            {
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    IndexReportCard.Save(saveFileDialog.FileName);
+                }
+            }          
+        }
+        private void OpenMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                IndexReportCard = new Assessments(AssessmentGrid, StipendBox, DateStartPicker, DateFinishPicker);              
+                if (IndexReportCard.Load(openFileDialog.FileName)) 
+                {
+                    saveFileDialog.FileName = openFileDialog.FileName;
+                }
+                else
+                {
+                    MessageBox.Show("Неверный формат файла", "Ошибка чтения файла");
+                }
+            }
+        }
+
+        private void SaveMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.FileName != "")
+            {
+                IndexReportCard.Save(saveFileDialog.FileName);
+            }
+            else
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    IndexReportCard = new Assessments(AssessmentGrid, StipendBox, DateStartPicker, DateFinishPicker);
+                    ReportCardPanel.Visible = true;
+                    IndexReportCard.Load(openFileDialog.FileName);
+                }
+            }
         }
     }
 }
