@@ -60,12 +60,6 @@
     <Compile Include="class\stringCipher.cs" />
     <Compile Include="class\student.cs" />
     <Compile Include="class\subject.cs" />
-    <Compile Include="DialogAddGroupStudents.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DialogAddGroupStudents.Designer.cs">
-      <DependentUpon>DialogAddGroupStudents.cs</DependentUpon>
-    </Compile>
     <Compile Include="DialogAddStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,9 +98,6 @@
     <Compile Include="SubjectForm.Designer.cs">
       <DependentUpon>SubjectForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DialogAddGroupStudents.resx">
-      <DependentUpon>DialogAddGroupStudents.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DialogAddStudent.resx">
       <DependentUpon>DialogAddStudent.cs</DependentUpon>
     </EmbeddedResource>

@@ -83,6 +83,11 @@ namespace Curs
         {
             RemoveStudent(student.Id);
         }
+        public void RemoveSelectStudent()
+        {
+            AssessmentsStudent student = (AssessmentsStudent)Table.CurrentRow.Tag;
+            RemoveStudent(student.IdStudent);
+        }
         public void AddSubject(int subject)
         {
             if (!SubjectsList.Contains(subject))

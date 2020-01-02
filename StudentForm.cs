@@ -79,8 +79,6 @@ namespace Curs
             columns[2].HeaderText = "Имя";
             columns[3].HeaderText = "Отчество";
             columns[4].Visible = false;
-            //DataGridViewCheckBoxCell checkCell = new DataGridViewCheckBoxCell();
-            //_ = checkCell;
             columns[5].HeaderText = "Платная форма обучения";
             columns[6].HeaderText = "Активное участие в общественной деятельности";
             columns[7].Visible = false;

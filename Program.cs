@@ -46,7 +46,8 @@ namespace Curs
                     value += str[i];
                 }
             }
-            newList.Add(Int32.Parse(value));
+            if (str.Length > 0)
+                newList.Add(Int32.Parse(value));
             return newList;
         }
         public static List<string> StringInListString(string str, char delimiter)
@@ -66,7 +67,8 @@ namespace Curs
                     value += str[i];
                 }
             }
-            newList.Add(value);
+            if (str.Length > 0)
+                newList.Add(value);
             return newList;
         }
     }

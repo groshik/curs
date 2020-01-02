@@ -90,22 +90,7 @@ namespace Curs
                     }
                 }
             }
-        }
-        private void AddGroupStudentsButton_Click(object sender, EventArgs e)
-        {
-            using (DialogAddGroupStudents dialog = new DialogAddGroupStudents())
-            {
-                DialogResult dr = dialog.ShowDialog(this);
-                if (dr == DialogResult.Cancel)
-                {
-                    dialog.Close();
-                }
-                else if (dr == DialogResult.OK)
-                {
-                    dialog.Close();
-                }
-            }
-        }
+        }-
         private void Scholarship_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar != 8)
@@ -196,13 +181,18 @@ namespace Curs
             }
             else
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     IndexReportCard = new Assessments(AssessmentGrid, StipendBox, DateStartPicker, DateFinishPicker);
                     ReportCardPanel.Visible = true;
-                    IndexReportCard.Load(openFileDialog.FileName);
+                    IndexReportCard.Save(saveFileDialog.FileName);
                 }
             }
+        }
+
+        private void DeleteStudentButton_Click(object sender, EventArgs e)
+        {
+            IndexReportCard.RemoveSelectStudent();
         }
     }
 }
