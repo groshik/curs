@@ -54,21 +54,33 @@ namespace Curs
         {
             this.Enabled = false;
 #pragma warning disable IDE0067
-            new StudentForm(this).Show();
+            StudentForm sf = new StudentForm(this);
+            sf.StartPosition = FormStartPosition.CenterScreen;
+            sf.Width = Width;
+            sf.Height = Height;
+            sf.Show();
 #pragma warning restore IDE0067
         }
         private void GroupButton_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
 #pragma warning disable IDE0067
-            new GroupForm(this).Show();
+            GroupForm gf = new GroupForm(this);
+            gf.StartPosition = FormStartPosition.CenterScreen;
+            gf.Width = Width;
+            gf.Height = Height;
+            gf.Show();
 #pragma warning restore IDE0067
         }
         private void SubjectsButton_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
 #pragma warning disable IDE0067
-            new SubjectForm(this).Show();
+            SubjectForm sf = new SubjectForm(this);
+            sf.StartPosition = FormStartPosition.CenterScreen;
+            sf.Width = Width;
+            sf.Height = Height;
+            sf.Show();
 #pragma warning restore IDE0067
         }
         private void AddStudentButton_Click(object sender, EventArgs e)
@@ -90,7 +102,7 @@ namespace Curs
                     }
                 }
             }
-        }-
+        }
         private void Scholarship_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar != 8)
@@ -193,6 +205,16 @@ namespace Curs
         private void DeleteStudentButton_Click(object sender, EventArgs e)
         {
             IndexReportCard.RemoveSelectStudent();
+        }
+
+        private void DeleteSubjectButton_Click(object sender, EventArgs e)
+        {
+            IndexReportCard.RemoveSelectSubject();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

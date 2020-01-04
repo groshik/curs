@@ -76,11 +76,16 @@ namespace Curs
             DataGridViewColumnCollection columns = studentGridView.Columns;
             columns[0].Visible = false;
             columns[1].HeaderText = "Фамилия";
+            columns[1].SortMode = DataGridViewColumnSortMode.Automatic;
             columns[2].HeaderText = "Имя";
+            columns[2].SortMode = DataGridViewColumnSortMode.Automatic;
             columns[3].HeaderText = "Отчество";
+            columns[3].SortMode = DataGridViewColumnSortMode.Automatic;
             columns[4].Visible = false;
             columns[5].HeaderText = "Платная форма обучения";
+            columns[5].SortMode = DataGridViewColumnSortMode.Automatic;
             columns[6].HeaderText = "Активное участие в общественной деятельности";
+            columns[6].SortMode = DataGridViewColumnSortMode.Automatic;
             columns[7].Visible = false;
             columns[8].Visible = false;
             DataGridViewComboBoxColumn comboCol = new DataGridViewComboBoxColumn();
@@ -98,6 +103,7 @@ namespace Curs
             comboCol.DisplayMember = "Number";
             comboCol.ValueMember = "ID";
             comboCol.HeaderText = "Группа";
+            comboCol.SortMode = DataGridViewColumnSortMode.Automatic;
             studentGridView.Columns.Add(comboCol);
         }
         private void AddStudentButton_Click(object sender, EventArgs e)

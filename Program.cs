@@ -18,7 +18,7 @@ namespace Curs
             Subjects.Load();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new LoginForm());
         }
         public static int CheckString(string s1, string s2)
         {

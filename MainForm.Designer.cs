@@ -52,6 +52,8 @@
             this.DateFinishPicker = new System.Windows.Forms.DateTimePicker();
             this.AssessmentGrid = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.DeleteStudentButton = new System.Windows.Forms.Button();
+            this.DeleteSubjectButton = new System.Windows.Forms.Button();
             this.AddSubjectButton = new System.Windows.Forms.Button();
             this.AddStudentButton = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -59,8 +61,6 @@
             this.groupsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupCollectionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DeleteSubjectButton = new System.Windows.Forms.Button();
-            this.DeleteStudentButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,20 +81,20 @@
             this.SaveMenuItem,
             this.SaveAsMenuItem});
             this.ReportCardMenuItem.Name = "ReportCardMenuItem";
-            this.ReportCardMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.ReportCardMenuItem.Size = new System.Drawing.Size(57, 20);
             this.ReportCardMenuItem.Text = "Табель";
             // 
             // CreateMenuItem
             // 
             this.CreateMenuItem.Name = "CreateMenuItem";
-            this.CreateMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.CreateMenuItem.Size = new System.Drawing.Size(154, 22);
             this.CreateMenuItem.Text = "Создать";
             this.CreateMenuItem.Click += new System.EventHandler(this.CreateMenuItem_Click);
             // 
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.OpenMenuItem.Size = new System.Drawing.Size(154, 22);
             this.OpenMenuItem.Text = "Открыть";
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
             // 
@@ -102,7 +102,7 @@
             // 
             this.SaveMenuItem.Enabled = false;
             this.SaveMenuItem.Name = "SaveMenuItem";
-            this.SaveMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.SaveMenuItem.Size = new System.Drawing.Size(154, 22);
             this.SaveMenuItem.Text = "Сохранить";
             this.SaveMenuItem.Click += new System.EventHandler(this.SaveMenuItem_Click);
             // 
@@ -110,7 +110,7 @@
             // 
             this.SaveAsMenuItem.Enabled = false;
             this.SaveAsMenuItem.Name = "SaveAsMenuItem";
-            this.SaveAsMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.SaveAsMenuItem.Size = new System.Drawing.Size(154, 22);
             this.SaveAsMenuItem.Text = "Сохранить как";
             this.SaveAsMenuItem.Click += new System.EventHandler(this.SaveAsMenuItem_Click);
             // 
@@ -293,6 +293,7 @@
             // AssessmentGrid
             // 
             this.AssessmentGrid.AllowUserToAddRows = false;
+            this.AssessmentGrid.AllowUserToDeleteRows = false;
             this.AssessmentGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.AssessmentGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AssessmentGrid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -322,6 +323,31 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(575, 28);
             this.panel3.TabIndex = 2;
+            // 
+            // DeleteStudentButton
+            // 
+            this.DeleteStudentButton.AutoSize = true;
+            this.DeleteStudentButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.DeleteStudentButton.Location = new System.Drawing.Point(349, 0);
+            this.DeleteStudentButton.Name = "DeleteStudentButton";
+            this.DeleteStudentButton.Size = new System.Drawing.Size(113, 28);
+            this.DeleteStudentButton.TabIndex = 4;
+            this.DeleteStudentButton.Text = "Удалить студента";
+            this.DeleteStudentButton.UseVisualStyleBackColor = true;
+            this.DeleteStudentButton.Click += new System.EventHandler(this.DeleteStudentButton_Click);
+            // 
+            // DeleteSubjectButton
+            // 
+            this.DeleteSubjectButton.AutoSize = true;
+            this.DeleteSubjectButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.DeleteSubjectButton.Location = new System.Drawing.Point(462, 0);
+            this.DeleteSubjectButton.Name = "DeleteSubjectButton";
+            this.DeleteSubjectButton.Size = new System.Drawing.Size(113, 28);
+            this.DeleteSubjectButton.TabIndex = 3;
+            this.DeleteSubjectButton.TabStop = false;
+            this.DeleteSubjectButton.Text = "Удалить предмет";
+            this.DeleteSubjectButton.UseVisualStyleBackColor = true;
+            this.DeleteSubjectButton.Click += new System.EventHandler(this.DeleteSubjectButton_Click);
             // 
             // AddSubjectButton
             // 
@@ -364,30 +390,6 @@
             // 
             this.groupBindingSource.DataSource = typeof(Curs.Group);
             // 
-            // DeleteSubjectButton
-            // 
-            this.DeleteSubjectButton.AutoSize = true;
-            this.DeleteSubjectButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.DeleteSubjectButton.Location = new System.Drawing.Point(462, 0);
-            this.DeleteSubjectButton.Name = "DeleteSubjectButton";
-            this.DeleteSubjectButton.Size = new System.Drawing.Size(113, 28);
-            this.DeleteSubjectButton.TabIndex = 3;
-            this.DeleteSubjectButton.TabStop = false;
-            this.DeleteSubjectButton.Text = "Удалить предмет";
-            this.DeleteSubjectButton.UseVisualStyleBackColor = true;
-            // 
-            // DeleteStudentButton
-            // 
-            this.DeleteStudentButton.AutoSize = true;
-            this.DeleteStudentButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.DeleteStudentButton.Location = new System.Drawing.Point(349, 0);
-            this.DeleteStudentButton.Name = "DeleteStudentButton";
-            this.DeleteStudentButton.Size = new System.Drawing.Size(113, 28);
-            this.DeleteStudentButton.TabIndex = 4;
-            this.DeleteStudentButton.Text = "Удалить студента";
-            this.DeleteStudentButton.UseVisualStyleBackColor = true;
-            this.DeleteStudentButton.Click += new System.EventHandler(this.DeleteStudentButton_Click);
-            // 
             // MainForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
@@ -402,6 +404,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Система расчёта стипендии";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

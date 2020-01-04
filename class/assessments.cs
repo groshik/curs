@@ -85,8 +85,11 @@ namespace Curs
         }
         public void RemoveSelectStudent()
         {
-            AssessmentsStudent student = (AssessmentsStudent)Table.CurrentRow.Tag;
-            RemoveStudent(student.IdStudent);
+            if (Table.CurrentRow != null)
+            {
+                AssessmentsStudent student = (AssessmentsStudent)Table.CurrentRow.Tag;
+                RemoveStudent(student.IdStudent);
+            }        
         }
         public void AddSubject(int subject)
         {
@@ -104,6 +107,31 @@ namespace Curs
         {
             AddSubject(subject.Id);
         }
+        public void RemoveSubject(int subject)
+        {
+            if (SubjectsList.Contains(subject))
+            {
+                SubjectsList.Remove(subject);
+                StudentList.ForEach(stud =>
+                {
+                    if (stud.AssessmentsList.ContainsKey(subject))
+                        stud.AssessmentsList.Remove(subject);
+                });
+            }
+        }
+        public void RemoveSelectSubject()
+        {
+           
+            if (Table.SelectedCells[0] != null)
+            {
+                int indexCol = Table.SelectedCells[0].ColumnIndex;
+                string name = Table.Columns[indexCol].Name;
+                if (Int32.TryParse(name, out int index))
+                {
+                    RemoveSubject(index);
+                }
+            }
+        }
         public void UpdateTable()
         {
             Table.Rows.Clear();
@@ -111,7 +139,15 @@ namespace Curs
             Table.CellValueChanged -= UpdateData;
             SubjectsList.ForEach(subject => {
                 Subject subjectInfo = Subjects.GetSubjectByID(subject);
-                Table.Columns.Add(subjectInfo.Id.ToString(), subjectInfo.Title);
+                DataGridViewColumn newCol = new DataGridViewColumn()
+                {
+                    Name = subjectInfo.Id.ToString(),
+                    HeaderText = subjectInfo.Title,
+                    SortMode = DataGridViewColumnSortMode.NotSortable,
+                    CellTemplate = new DataGridViewTextBoxCell()
+                };
+                
+                Table.Columns.Add(newCol);
             });
 
             DataGridViewColumn averageAssessmentCol = new DataGridViewColumn
