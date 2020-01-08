@@ -78,7 +78,7 @@ namespace Curs
             sf.Show();
 #pragma warning restore IDE0067
         }
-        private void userButton_Click(object sender, EventArgs e)
+        private void UserButton_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
 #pragma warning disable IDE0067

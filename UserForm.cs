@@ -63,12 +63,12 @@ namespace Curs
             NoSave = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void addUserButton_Click(object sender, EventArgs e)
+        private void AddUserButton_Click(object sender, EventArgs e)
         {
             using (DialogAddUser adminadddUserForm = new DialogAddUser())
             {
@@ -106,7 +106,7 @@ namespace Curs
             }
         }
 
-        private void deleteUserButton_Click(object sender, EventArgs e)
+        private void DeleteUserButton_Click(object sender, EventArgs e)
         {
             if (Users.DeleteUsert((User)userGridView.CurrentRow.DataBoundItem))
             {
@@ -115,14 +115,14 @@ namespace Curs
             }
         }
 
-        private void saveUsersButton_Click(object sender, EventArgs e)
+        private void SaveUsersButton_Click(object sender, EventArgs e)
         {
             Users.Save();
             NoSave = false;
             userGridView.DataSource = Users.GetUsersList();
         }
 
-        private void censelUsersButton_Click(object sender, EventArgs e)
+        private void CenselUsersButton_Click(object sender, EventArgs e)
         {
             Users.Load();
             NoSave = false;
@@ -130,12 +130,12 @@ namespace Curs
         }
 
         private Point mouseLocation;
-        private void panel4_MouseDown(object sender, MouseEventArgs e)
+        private void Panel4_MouseDown(object sender, MouseEventArgs e)
         {
             mouseLocation = new Point(-e.X, -e.Y);
         }
 
-        private void panel4_MouseMove(object sender, MouseEventArgs e)
+        private void Panel4_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -144,17 +144,17 @@ namespace Curs
                 Location = mousePose;
             }
         }
-        private void label1_MouseDown(object sender, MouseEventArgs e)
+        private void Label1_MouseDown(object sender, MouseEventArgs e)
         {
-            panel4_MouseDown(sender, e);
+            Panel4_MouseDown(sender, e);
         }
 
-        private void label1_MouseMove(object sender, MouseEventArgs e)
+        private void Label1_MouseMove(object sender, MouseEventArgs e)
         {
-            panel4_MouseMove(sender, e);
+            Panel4_MouseMove(sender, e);
         }
 
-        private void userGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void UserGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             List<User> userList = Users.GetUsersList();
             int AscDesc = 1;

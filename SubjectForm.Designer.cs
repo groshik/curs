@@ -166,8 +166,8 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(740, 30);
             this.panel4.TabIndex = 4;
-            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
-            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
+            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel4_MouseDown);
+            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel4_MouseMove);
             // 
             // label1
             // 
@@ -181,8 +181,8 @@
             label1.TabIndex = 1;
             label1.Text = "Предметы";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
-            label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
+            label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Label1_MouseDown);
+            label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Label1_MouseMove);
             // 
             // button1
             // 
@@ -196,7 +196,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // groupBindingSource
             // 

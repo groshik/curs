@@ -62,8 +62,8 @@
             label1.TabIndex = 1;
             label1.Text = "Пользователи";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
-            label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
+            label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Label1_MouseDown);
+            label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Label1_MouseMove);
             // 
             // panel3
             // 
@@ -88,7 +88,7 @@
             this.saveUsersButton.TabIndex = 3;
             this.saveUsersButton.Text = "Сохранить";
             this.saveUsersButton.UseVisualStyleBackColor = true;
-            this.saveUsersButton.Click += new System.EventHandler(this.saveUsersButton_Click);
+            this.saveUsersButton.Click += new System.EventHandler(this.SaveUsersButton_Click);
             // 
             // censelUsersButton
             // 
@@ -100,7 +100,7 @@
             this.censelUsersButton.TabIndex = 2;
             this.censelUsersButton.Text = "Отменить";
             this.censelUsersButton.UseVisualStyleBackColor = true;
-            this.censelUsersButton.Click += new System.EventHandler(this.censelUsersButton_Click);
+            this.censelUsersButton.Click += new System.EventHandler(this.CenselUsersButton_Click);
             // 
             // deleteUserButton
             // 
@@ -112,7 +112,7 @@
             this.deleteUserButton.TabIndex = 1;
             this.deleteUserButton.Text = "Удалить";
             this.deleteUserButton.UseVisualStyleBackColor = true;
-            this.deleteUserButton.Click += new System.EventHandler(this.deleteUserButton_Click);
+            this.deleteUserButton.Click += new System.EventHandler(this.DeleteUserButton_Click);
             // 
             // addUserButton
             // 
@@ -124,7 +124,7 @@
             this.addUserButton.TabIndex = 0;
             this.addUserButton.Text = "Добавить";
             this.addUserButton.UseVisualStyleBackColor = true;
-            this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
+            this.addUserButton.Click += new System.EventHandler(this.AddUserButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -156,8 +156,8 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(740, 30);
             this.panel4.TabIndex = 4;
-            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
-            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseMove);
+            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel4_MouseDown);
+            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel4_MouseMove);
             // 
             // button1
             // 
@@ -171,7 +171,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // panel2
             // 
@@ -194,7 +194,7 @@
             this.userGridView.Name = "userGridView";
             this.userGridView.Size = new System.Drawing.Size(740, 332);
             this.userGridView.TabIndex = 0;
-            this.userGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.userGridView_ColumnHeaderMouseClick);
+            this.userGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.UserGridView_ColumnHeaderMouseClick);
             // 
             // groupBindingSource
             // 

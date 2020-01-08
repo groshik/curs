@@ -168,7 +168,6 @@
     <EmbeddedResource Include="SubjectForm.resx">
       <DependentUpon>SubjectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\DataSources\Group.datasource" />
     <None Include="Properties\DataSources\Student.datasource" />
     <None Include="Properties\DataSources\Students.datasource" />

@@ -136,7 +136,7 @@
             this.groupComboBox.Name = "groupComboBox";
             this.groupComboBox.Size = new System.Drawing.Size(239, 21);
             this.groupComboBox.TabIndex = 4;
-            this.groupComboBox.SelectedIndexChanged += new System.EventHandler(this.groupComboBox_SelectedIndexChanged);
+            this.groupComboBox.SelectedIndexChanged += new System.EventHandler(this.GroupComboBox_SelectedIndexChanged);
             // 
             // GreetingsForm
             // 

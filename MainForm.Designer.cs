@@ -382,7 +382,7 @@ namespace Curs
             this.userButton.TabIndex = 14;
             this.userButton.Text = "Пользователи";
             this.userButton.UseVisualStyleBackColor = false;
-            this.userButton.Click += new System.EventHandler(this.userButton_Click);
+            this.userButton.Click += new System.EventHandler(this.UserButton_Click);
             // 
             // subjectsButton
             // 

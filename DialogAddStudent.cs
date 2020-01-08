@@ -64,7 +64,7 @@ namespace Curs
             StudentListBox.DataSource = Students.Items.Where(student => student.FullFullName.ToLower().Contains(SerchBox.Text.ToLower())).ToList();
         }
 
-        private void groupComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void GroupComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Group selectGroup = (Group)groupComboBox.SelectedItem;
             if (selectGroup.Id != 0)

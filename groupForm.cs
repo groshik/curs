@@ -153,17 +153,17 @@ namespace Curs
             groupGridView.DataSource = groupList.ToList();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             Close();
         }
         private Point mouseLocation;
-        private void panel4_MouseDown(object sender, MouseEventArgs e)
+        private void Panel4_MouseDown(object sender, MouseEventArgs e)
         {
             mouseLocation = new Point(-e.X, -e.Y);
         }
 
-        private void panel4_MouseMove(object sender, MouseEventArgs e)
+        private void Panel4_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -172,14 +172,14 @@ namespace Curs
                 Location = mousePose;
             }
         }
-        private void label1_MouseDown(object sender, MouseEventArgs e)
+        private void Label1_MouseDown(object sender, MouseEventArgs e)
         {
-            panel4_MouseDown(sender, e);
+            Panel4_MouseDown(sender, e);
         }
 
-        private void label1_MouseMove(object sender, MouseEventArgs e)
+        private void Label1_MouseMove(object sender, MouseEventArgs e)
         {
-            panel4_MouseMove(sender, e);
+            Panel4_MouseMove(sender, e);
         }
     }
 }
