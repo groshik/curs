@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.IO;
 using Newtonsoft.Json;
+using System.Windows.Forms;
 
 namespace Curs
 {
@@ -32,8 +33,12 @@ namespace Curs
             get { return surname; }
             set
             {
-                surname = value;
-                ChangeDataEvent?.Invoke();
+                if (Program.SelectUser == null || Program.SelectUser.Role < 2)
+                {
+                    surname = value;
+                    ChangeDataEvent?.Invoke();
+                }
+                    
             }
         }
         public string Name
@@ -41,8 +46,12 @@ namespace Curs
             get { return name; }
             set
             {
-                name = value;
-                ChangeDataEvent?.Invoke();
+                if (Program.SelectUser == null || Program.SelectUser.Role < 2)
+                {
+                    name = value;
+                    ChangeDataEvent?.Invoke();
+                }
+                    
             }
         }
         public string Patronymic
@@ -50,8 +59,12 @@ namespace Curs
             get { return patronymic; }
             set
             {
-                patronymic = value;
-                ChangeDataEvent?.Invoke();
+                if (Program.SelectUser == null || Program.SelectUser.Role < 2)
+                {
+                    patronymic = value;
+                    ChangeDataEvent?.Invoke();
+                }
+                    
             }
         }
         public int Id_Group
@@ -59,8 +72,11 @@ namespace Curs
             get { return id_group; }
             set
             {
-                id_group = value;
-                ChangeDataEvent?.Invoke();
+                if (Program.SelectUser == null || Program.SelectUser.Role < 2)
+                {
+                    id_group = value;
+                    ChangeDataEvent?.Invoke();
+                }                  
             }
         }
         public bool Paid_Form_Of_Study
@@ -68,8 +84,12 @@ namespace Curs
             get { return paid_form_of_study; }
             set
             {
-                paid_form_of_study = value;
-                ChangeDataEvent?.Invoke();
+                if (Program.SelectUser == null || Program.SelectUser.Role < 2)
+                {
+                    paid_form_of_study = value;
+                    ChangeDataEvent?.Invoke();
+                }
+                    
             }
         }
         public bool Active_Participation
@@ -77,8 +97,12 @@ namespace Curs
             get { return active_participation; }
             set
             {
-                active_participation = value;
-                ChangeDataEvent?.Invoke();
+                if (Program.SelectUser == null || Program.SelectUser.Role < 2)
+                {
+                    active_participation = value;
+                    ChangeDataEvent?.Invoke();
+                }
+                    
             }
         }
         public string FullName
@@ -111,31 +135,58 @@ namespace Curs
         static public List<Student> Items { get; set; }
         public delegate void ChangeDataInListHandelr();
         public static event ChangeDataInListHandelr ChangeDataInListEvent;
-        static public void Load() {
-            string JSONString;
-            FileRead JSONRead = new FileRead();
+        static public void Load() 
+        {
+            User selUser = Program.SelectUser;
+            Program.SelectUser = null;
             string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\students.hav");
-            JSONString = JSONRead.GetJSONString(path);
-            StudentCollection studentCollection = JsonConvert.DeserializeObject<StudentCollection>(JSONString);
-            Items = studentCollection.Students;
-            Items.ForEach(student =>
+            if (File.Exists(path))
             {
-                student.ChangeDataEvent += () =>
+                string JSONString;
+                FileRead JSONRead = new FileRead();
+            
+                JSONString = JSONRead.GetJSONString(path);
+                StudentCollection studentCollection = JsonConvert.DeserializeObject<StudentCollection>(JSONString);
+                Items = studentCollection.Students;
+                Items.ForEach(student =>
                 {
-                    ChangeDataInListEvent?.Invoke();
-                };
-            });
+                    student.ChangeDataEvent += () =>
+                    {
+                        ChangeDataInListEvent?.Invoke();
+                    };
+                });
+            }
+            else
+            {
+                Save();
+                Load();
+            }
+            Program.SelectUser = selUser;
         }
         static public void Save()
         {
+            User selUser = Program.SelectUser;
+            Program.SelectUser = null;
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\students.hav"); 
+            string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "data");
+            if (!File.Exists(path))
+            {
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+                FileStream fs = File.Create(path);
+                fs.Close();
+            }
             StudentCollection studentCollection = new StudentCollection
             {
-                Students = Items
+                Students = Items ?? new List<Student>()
             };  
             string JSONString = JsonConvert.SerializeObject(studentCollection);
             FileRead JSONRead = new FileRead();
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\students.hav");
+            
             JSONRead.SaveJSONString(path, JSONString);
+            Program.SelectUser = selUser;
         }
         static public Student GetStudentByID(int id)
         {
@@ -159,26 +210,47 @@ namespace Curs
             }
             return false;
         }
-        static public void AddStudent(Group group)
+        static public bool AddStudent(Group group)
         {
-            Student student = new Student
+            if (Program.SelectUser.Role < 2)
             {
-                Id_Group = group.Id,
-                Id = GetNextId()
-            };
-            student.ChangeDataEvent += () =>
+                Student student = new Student
+                {
+                    Id_Group = group.Id,
+                    Id = GetNextId()
+                };
+                student.ChangeDataEvent += () =>
+                {
+                    ChangeDataInListEvent?.Invoke();
+                };
+                Items.Add(student);
+                return true;
+            }
+            else
             {
-                ChangeDataInListEvent?.Invoke();
-            };
-            Items.Add(student);
+                MessageBox.Show("У вас недостаточно Прав", "Ошибка создания студента");
+                return false;
+            }
         }
-        static public void DeleteStudent(Student student)
+        static public bool DeleteStudent(Student student)
         {
-            Items.Remove(student);
+            if (Program.SelectUser.Role < 2)
+            {
+                Items.Remove(student);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("У вас недостаточно Прав", "Ошибка удаления студента");
+                return false;
+            }
         }
         static public int GetNextId()
         {
-            return Items.Last().Id + 1;
+            if (Items.Count > 0)
+                return Items.Last().Id + 1;
+            else
+                return 1;
         }
         
     }

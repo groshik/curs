@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Newtonsoft.Json;
+using System.Windows.Forms;
 
 namespace Curs
 {
@@ -13,6 +14,15 @@ namespace Curs
 
     class Group
     {
+        public Group()
+        {
+
+        }
+        public Group(int Id, string Number)
+        {
+            id = Id;
+            number = Number;
+        }
         private int id;
         private string number;
         private string curator;
@@ -24,8 +34,12 @@ namespace Curs
             }
             set
             {
-                id = value;
-                ChangeDataEvent?.Invoke();
+                if (Program.SelectUser == null || Program.SelectUser.Role < 2)
+                {
+                    id = value;
+                    ChangeDataEvent?.Invoke();
+                }
+                    
             }
         }
         public string Number
@@ -36,8 +50,12 @@ namespace Curs
             }
             set
             {
-                number = value;
-                ChangeDataEvent?.Invoke();
+                if (Program.SelectUser == null || Program.SelectUser.Role < 2)
+                {
+                    number = value;
+                    ChangeDataEvent?.Invoke();
+                }
+                    
             }
         }
         public string Curator
@@ -48,8 +66,12 @@ namespace Curs
             }
             set
             {
-                curator = value;
-                ChangeDataEvent?.Invoke();
+                if (Program.SelectUser == null || Program.SelectUser.Role < 2)
+                {
+                    curator = value;
+                    ChangeDataEvent?.Invoke();
+                }
+                    
             }
         }
         public delegate void ChangeDataHandelr();
@@ -62,30 +84,55 @@ namespace Curs
         public static event ChangeDataInListHandelr ChangeDataInListEvent;
         static public void Load()
         {
-            string JSONString;
-            FileRead JSONRead = new FileRead();
+            User selUser = Program.SelectUser;
+            Program.SelectUser = null;
             string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\groups.hav");
-            JSONString = JSONRead.GetJSONString(path);
-            GroupCollection groupCollection = JsonConvert.DeserializeObject<GroupCollection>(JSONString);
-            Items = groupCollection.Groups;
-            Items.ForEach(group =>
+            if (File.Exists(path))
             {
-                group.ChangeDataEvent += () =>
+                string JSONString;
+                FileRead JSONRead = new FileRead();
+            
+                JSONString = JSONRead.GetJSONString(path);
+                GroupCollection groupCollection = JsonConvert.DeserializeObject<GroupCollection>(JSONString);
+                Items = groupCollection.Groups;
+                Items.ForEach(group =>
                 {
-                    ChangeDataInListEvent?.Invoke();
-                };
-            });
+                    group.ChangeDataEvent += () =>
+                    {
+                        ChangeDataInListEvent?.Invoke();
+                    };
+                });
+            }
+            else
+            {
+                Save();
+                Load();
+            }
+            Program.SelectUser = selUser;
         }
         static public void Save()
         {
+            User selUser = Program.SelectUser;
+            Program.SelectUser = null;
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\groups.hav");
+            string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "data");
+            if (!File.Exists(path))
+            {
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+                FileStream fs = File.Create(path);
+                fs.Close();
+            }
             GroupCollection groupCollection = new GroupCollection
             {
-                Groups = Items
+                Groups = Items ?? new List<Group>()
             };
             string JSONString = JsonConvert.SerializeObject(groupCollection);
             FileRead JSONRead = new FileRead();
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "data\\groups.hav");
             JSONRead.SaveJSONString(path, JSONString);
+            Program.SelectUser = selUser;
         }
         static public Group GetGroupByID(int id)
         {
@@ -97,7 +144,12 @@ namespace Curs
                     return group;
                 }
             }
-            return null;
+            Group noGroup = new Group
+            {
+                Id = 0,
+                Number = "Нет группы"
+            };
+            return noGroup;
         }
         static public bool Extant(int id)
         {
@@ -110,26 +162,47 @@ namespace Curs
             }
             return false;
         }
-        static public void AddGroup()
+        static public bool AddGroup()
         {
-            Group group = new Group
+            if (Program.SelectUser.Role < 2)
             {
-                Id = Students.GetNextId()
-            };
-            group.ChangeDataEvent += () =>
+                Group group = new Group
+                {
+                    Id = Students.GetNextId()
+                };
+                group.ChangeDataEvent += () =>
+                {
+                    ChangeDataInListEvent?.Invoke();
+                };
+                Items.Add(group);
+                return true;
+            }
+            else
             {
-                ChangeDataInListEvent?.Invoke();
-            };
-            Items.Add(group);
+                MessageBox.Show("У вас недостаточно Прав", "Ошибка создания группы");
+                return false;
+            }
         }
 
-        static public void DeleteStudent(Group group)
+        static public bool DeleteGrop(Group group)
         {
-            Items.Remove(group);
+            if (Program.SelectUser.Role < 2)
+            {
+                Items.Remove(group);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("У вас недостаточно Прав", "Ошибка удаления группы");
+                return false;
+            }
         }
         static public int GetNextId()
         {
-            return ++Items.Last().Id;
+            if (Items.Count > 0)
+                return Items.Last().Id + 1;
+            else
+                return 1;
         }
     }
 }

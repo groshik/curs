@@ -1,6 +1,6 @@
 ﻿namespace Curs
 {
-    partial class DialogAddStudent
+    partial class GreetingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +34,7 @@
             this.CancelDialogButton = new System.Windows.Forms.Button();
             this.OKButton = new System.Windows.Forms.Button();
             this.StudentListBox = new System.Windows.Forms.ListBox();
+            this.groupComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -42,18 +43,19 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.SerchBox, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.StudentListBox, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.SerchBox, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.StudentListBox, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.groupComboBox, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(239, 302);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -61,7 +63,7 @@
             // 
             this.SerchBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SerchBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.SerchBox.Location = new System.Drawing.Point(0, 0);
+            this.SerchBox.Location = new System.Drawing.Point(0, 21);
             this.SerchBox.Margin = new System.Windows.Forms.Padding(0);
             this.SerchBox.Name = "SerchBox";
             this.SerchBox.Size = new System.Drawing.Size(239, 20);
@@ -117,21 +119,33 @@
             // 
             this.StudentListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StudentListBox.FormattingEnabled = true;
-            this.StudentListBox.Location = new System.Drawing.Point(0, 20);
+            this.StudentListBox.Location = new System.Drawing.Point(0, 41);
             this.StudentListBox.Margin = new System.Windows.Forms.Padding(0);
             this.StudentListBox.Name = "StudentListBox";
             this.StudentListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.StudentListBox.Size = new System.Drawing.Size(239, 248);
+            this.StudentListBox.Size = new System.Drawing.Size(239, 227);
             this.StudentListBox.TabIndex = 1;
             // 
-            // DialogAddStudent
+            // groupComboBox
+            // 
+            this.groupComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.groupComboBox.FormattingEnabled = true;
+            this.groupComboBox.Location = new System.Drawing.Point(0, 0);
+            this.groupComboBox.Margin = new System.Windows.Forms.Padding(0);
+            this.groupComboBox.Name = "groupComboBox";
+            this.groupComboBox.Size = new System.Drawing.Size(239, 21);
+            this.groupComboBox.TabIndex = 4;
+            this.groupComboBox.SelectedIndexChanged += new System.EventHandler(this.groupComboBox_SelectedIndexChanged);
+            // 
+            // GreetingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(239, 302);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "DialogAddStudent";
+            this.Name = "GreetingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Выбор студента";
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -149,5 +163,6 @@
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.ListBox StudentListBox;
         private System.Windows.Forms.TextBox SerchBox;
+        private System.Windows.Forms.ComboBox groupComboBox;
     }
 }

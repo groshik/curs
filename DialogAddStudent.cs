@@ -9,14 +9,23 @@ using System.Windows.Forms;
 
 namespace Curs
 {
-    public partial class DialogAddStudent : Form
+    public partial class GreetingsForm : Form
     {
-        public DialogAddStudent()
+        public GreetingsForm()
         {
             InitializeComponent();
             StudentListBox.DataSource = Students.Items.Where(student => !student.Paid_Form_Of_Study).ToList();
             StudentListBox.DisplayMember = "FullName";
             StudentListBox.ValueMember = "Id";
+            Group allGroup = new Group(0, "Все группы");
+            List<Group> gruops = new List<Group>
+            {
+                allGroup
+            };
+            gruops.AddRange(Groups.Items.ToList());
+            groupComboBox.DataSource = gruops;
+            groupComboBox.DisplayMember = "Number";
+            groupComboBox.ValueMember = "Id";
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -53,6 +62,15 @@ namespace Curs
         private void SerchBox_KeyUp(object sender, KeyEventArgs e)
         {
             StudentListBox.DataSource = Students.Items.Where(student => student.FullFullName.ToLower().Contains(SerchBox.Text.ToLower())).ToList();
+        }
+
+        private void groupComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Group selectGroup = (Group)groupComboBox.SelectedItem;
+            if (selectGroup.Id != 0)
+                StudentListBox.DataSource = Students.Items.Where(student => student.Id_Group == selectGroup.Id).ToList();
+            else
+                StudentListBox.DataSource = Students.Items.ToList();
         }
     }
 }
